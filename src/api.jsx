@@ -38,4 +38,9 @@ export const createSession = async (requestToken) => {
   return response.data;
 };
 
+export const getAllTrending = async () => {
+  const response = await api.get(`/trending/all/day?language=en-US`);
+  return response.data;
+};
+
 export default api;

@@ -36,7 +36,7 @@ const LoginPage = () => {
       const authResponse = await validateGuest();
 
       if (authResponse.success) {
-        cookies.set('session', authResponse.guest_session_id);
+        cookies.set('request_token', authResponse.guest_session_id);
         cookies.set('expried_at', authResponse.expires_at);
         window.location.href = '/dashboard'; 
       } else {
