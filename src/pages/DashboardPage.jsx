@@ -3,6 +3,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { getAllTrending } from "../api";
 import { FaStar } from "react-icons/fa";
+import { BiSolidLike } from "react-icons/bi";
+import moment from "moment";
+import Navbar from "../component/Movie/Navbar";
 
 const DashboardPage = () => {
   const [data, setData] = useState([]);
@@ -21,7 +24,8 @@ const DashboardPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="relative">
+      <Navbar />
       <Carousel
         swipeable
         emulateTouch
@@ -29,6 +33,7 @@ const DashboardPage = () => {
         infiniteLoop
         showThumbs={false}
         showStatus={false}
+        className="z-10"
       >
         {data?.results?.map((item) => (
           <div key={item.id} className="relative">
@@ -36,15 +41,24 @@ const DashboardPage = () => {
               src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
               alt={item.title}
             />
-            <div className="absolute top-1/3 left-10 z-2 text-white p-2 rounded w-2/5 text-justify">
-              <div className="flex flex-col gap-2">
+            <div className="absolute top-1/4 left-10 z-2 text-white p-2 rounded w-1/2 text-start">
+              <div className="flex flex-col gap-3">
                 <p className="text-5xl font-extrabold uppercase">{item.original_title || item.original_name}</p>
-                <div className="bg-yellow-500 py-1 text-center w-12 rounded-md text-black font-bold">{item.adult ? '13+' :'18+'}</div>
-                <p className="text-lg mt-10">{item.overview}</p>
+                <div className="flex gap-2 text-center">
+                  <p className="bg-yellow-500 text-black py-1 px-3 rounded-lg font-bold">{item.adult ? '13+' : '18+'}</p>
+                  <p className="bg-red-800 py-1 px-3 rounded-lg capitalize">{item.media_type}</p>
+                  <p className="bg-gray-900 py-1 px-3 rounded-lg capitalize">{moment(item.release_date).format('DD MMM YYYY')}</p>
+                </div>
+                <p className="text-lg mt-10 text-justify">{item.overview}</p>
+
                 <div className="flex gap-3 items-center text-2xl">
                   <FaStar className="text-yellow-400" />
-                  <div className="font-bold">{item.vote_average.toFixed(1)} <span className="font-normal text-xl ms-3 ps-3 border-s-2">{item.vote_count}</span></div>
+                  <div className="font-bold border-e-2 pe-3">{item.vote_average.toFixed(1)} </div>
+                  <BiSolidLike className=" text-xl" />
+                  <span className="font-normal text-xl"> {item.vote_count}</span>
                 </div>
+                <button className="button-movie-primary w-1/6">More..</button>
+
               </div>
             </div>
           </div>
