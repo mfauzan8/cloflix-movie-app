@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.custom-logo{
+   height: 52px;
+}
+
+.hero{
+   min-height: 600px;
+}
+
+.bg-primary-linear{
+   background: linear-gradient(90deg, #138883 0%, #3EB2AD 100%);
+}
+
+.line-height-75{
+   line-height: 75px;
+}
+
+.section-text{
+ line-height: 22.4px;
+ font-weight: 400;
+}
+
+.w-645{
+   width: 645px;
+}
+
+.text-md{
+   font-size: 16px;
+}
+
+.w-16 {
+   width: 68px;
+}
+
+.leading-50{
+
+   line-height: 50px
+}
+
+.px-15{
+   padding-left: 60px;
+   padding-right: 60px;
+}
+
+.px-167{
+   padding-left: 167px;
+   padding-right: 167px;
+}
+
+.w-187{
+   width: 187px;
+}
+
+.green-shadow{
+   box-shadow: 0px 16px 40px 0px #17A39D33;
+}
+
+.grey-shadow{
+   box-shadow: 0px 3px 6px 0px #3F3F440D;
+   box-shadow: 0px 2px 4px 0px #3F3F4405;
+}
+
+#semi-footer{
+ background-image: url('./assets/image/Accent.png');
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+
+.border-custom-navbar{
+   border-bottom-width: 3px;
+   transform: rotate(-18deg);
+}
