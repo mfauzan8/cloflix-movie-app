@@ -43,4 +43,10 @@ export const getAllTrending = async () => {
   return response.data;
 };
 
+
+export const getNowPlaying = async (page) => {
+  const response = await api.get(`/movie/now_playing?language=en-US&page=${page}`);
+  return response.data;
+};
+
 export default api;

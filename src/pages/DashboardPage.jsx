@@ -4,8 +4,9 @@ import { Carousel } from "react-responsive-carousel";
 import { getAllTrending } from "../api";
 import { FaStar } from "react-icons/fa";
 import { BiSolidLike } from "react-icons/bi";
-import moment from "moment";
 import Navbar from "../component/Movie/Navbar";
+import { FaPlus } from "react-icons/fa";
+import NowPlaying from "../component/Movie/NowPlaying";
 
 const DashboardPage = () => {
   const [data, setData] = useState([]);
@@ -33,6 +34,7 @@ const DashboardPage = () => {
         infiniteLoop
         showThumbs={false}
         showStatus={false}
+        stopOnHover	={false}
         className="z-10"
       >
         {data?.results?.map((item) => (
@@ -47,7 +49,7 @@ const DashboardPage = () => {
                 <div className="flex gap-2 text-center">
                   <p className="bg-yellow-500 text-black py-1 px-3 rounded-lg font-bold">{item.adult ? '13+' : '18+'}</p>
                   <p className="bg-red-800 py-1 px-3 rounded-lg capitalize">{item.media_type}</p>
-                  <p className="bg-gray-900 py-1 px-3 rounded-lg capitalize">{moment(item.release_date).format('DD MMM YYYY')}</p>
+                  {/* <p className="bg-gray-900 py-1 px-3 rounded-lg capitalize">{moment(item.release_date).format('DD MMM YYYY')}</p> */}
                 </div>
                 <p className="text-lg mt-10 text-justify">{item.overview}</p>
 
@@ -57,13 +59,16 @@ const DashboardPage = () => {
                   <BiSolidLike className=" text-xl" />
                   <span className="font-normal text-xl"> {item.vote_count}</span>
                 </div>
-                <button className="button-movie-primary w-1/6">More..</button>
-
+                <div className="flex w-2/5 gap-2">
+                <button className="button-movie bg-red-800">Details</button>
+                <button className="flex items-center gap-1 button-movie bg-black "><FaPlus /> Add to Watchlist</button>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </Carousel>
+      <NowPlaying/>
     </div>
   );
 };

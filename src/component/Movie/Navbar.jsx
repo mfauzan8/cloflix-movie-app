@@ -1,21 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BiSolidCameraMovie } from "react-icons/bi";
-
+import { IoSearch } from "react-icons/io5";
 
 const Navbar = () => {
     return (
-        <nav className="bg-black opacity-60 container py-3 px-20 text-white absolute top-0 z-20">
-            <div className="mx-auto flex justify-between items-center">
-                <div className="flex text-4xl font-black font-racing opacity-100">
+        <nav className="w-full bg-black opacity-60 py-3 px-20 text-white absolute top-0 z-20">
+            <div className="container mx-auto flex justify-between items-center">
+                <div className="flex text-4xl font-black font-racing">
                     <BiSolidCameraMovie />
                     Clo<span className="text-red-800">Flix</span>
                 </div>
                 <div className="flex gap-10">
-                    <Link to="/" className="hover:text-red-500">Home</Link>
-                    <Link to="/about" className="hover:text-red-500">Now Playing</Link>
-                    <Link to="/contact" className="hover:text-red-500">Coming Soon</Link>
-                    <Link to="/contact" className="hover:text-red-500">Popular</Link>
+                    <Link smooth to="/dashboard" className="nav-link">Home</Link>
+                    <Link smooth to="/movie"  className="nav-link">Movie</Link>
+                    <Link smooth to="/movie-series"  className="nav-link">Tv Series</Link>
+                    <Link smooth to="/watchlist"  className="nav-link">Watchlist</Link>
+                    <Link smooth to="/search"  className="nav-link flex items-center gap-1"><IoSearch /> Search</Link>
                 </div>
             </div>
         </nav>

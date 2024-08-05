@@ -19,32 +19,29 @@ module.exports = {
       fontFamily: {
         raleway: ["Raleway", "sans-serif"],
         inter: ["Inter"],
-        racing: ['Racing Sans One'],
+        racing: ["Racing Sans One"],
       },
     },
   },
   plugins: [
     function ({ addComponents }) {
       addComponents({
-        '.button-movie-primary': {
-          backgroundColor: '#991b1b',
-          color: '#ffffff',
-          fontWeight: '700',
-          padding: '0.5rem 1rem',
-          borderRadius: '0.375rem',
-          textAlign: 'center',
-          display: 'inline-block',
-          textDecoration: 'none',
-          cursor: 'pointer',
-          transition: 'background-color 0.3s ease',
+        ".button-movie": {
+          fontWeight: "700",
+          padding: "0.5rem 1rem",
+          borderRadius: "10px",
+          textAlign: "center",
+          display: "inline-block",
+          textDecoration: "none",
+          cursor: "pointer",
+          transition: "background-color 0.3s ease",
 
-          '&:hover': {
-            backgroundColor: '#c53030',
+          "&:hover": {
+            opacity: 0.9,
           },
 
-          '&:focus': {
-            outline: 'none',
-            boxShadow: '0 0 0 2px rgba(234, 87, 87, 0.5)',
+          "&:focus": {
+            outline: "none",
           },
         },
       });
