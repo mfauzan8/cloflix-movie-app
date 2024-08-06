@@ -49,7 +49,7 @@ const LoginPage = () => {
 
   return (
     <div className="w-screen grid grid-cols-2">
-      <div className="text-white bg-slate-900 flex justify-center items-center">
+      <div className="text-white bg-black flex justify-center items-center">
       <div className="backdrop-opacity-10 backdrop-invert bg-slate/50 w-1/2 px-15 py-10 rounded-xl backdrop-blur">
         <h1 className="lg:text-3xl sm:text-sm font-bold mb-6">
           Login Page

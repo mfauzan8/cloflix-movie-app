@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { BiSolidCameraMovie } from "react-icons/bi";
 import { IoSearch } from "react-icons/io5";
 
@@ -12,11 +12,47 @@ const Navbar = () => {
                     Clo<span className="text-red-800">Flix</span>
                 </div>
                 <div className="flex gap-10">
-                    <Link smooth to="/dashboard" className="nav-link">Home</Link>
-                    <Link smooth to="/movie"  className="nav-link">Movie</Link>
-                    <Link smooth to="/movie-series"  className="nav-link">Tv Series</Link>
-                    <Link smooth to="/watchlist"  className="nav-link">Watchlist</Link>
-                    <Link smooth to="/search"  className="nav-link flex items-center gap-1"><IoSearch /> Search</Link>
+                    <NavLink
+                        to="/dashboard"
+                        className={({ isActive }) => 
+                            `nav-link ${isActive ? 'active' : ''}`
+                        }
+                    >
+                        Home
+                    </NavLink>
+                    <NavLink
+                        to="/movie"
+                        className={({ isActive }) => 
+                            `nav-link ${isActive ? 'active' : ''}`
+                        }
+                    >
+                        Movie
+                    </NavLink>
+                    <NavLink
+                        to="/movie-series"
+                        className={({ isActive }) => 
+                            `nav-link ${isActive ? 'active' : ''}`
+                        }
+                    >
+                        Tv Series
+                    </NavLink>
+                    <NavLink
+                        to="/watchlist"
+                        className={({ isActive }) => 
+                            `nav-link ${isActive ? 'active' : ''}`
+                        }
+                    >
+                        Watchlist
+                    </NavLink>
+                    <NavLink
+                        to="/search"
+                        className={({ isActive }) => 
+                            `nav-link ${isActive ? 'active' : ''} flex gap-2 items-center`
+                        }
+                        end
+                    >
+                        <IoSearch /> Search
+                    </NavLink>
                 </div>
             </div>
         </nav>

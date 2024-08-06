@@ -4,6 +4,7 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from './pages/LoginPage';
 import PrivateRoute from "./routes/PrivateRoute";
 import DashboardPage from "./pages/DashboardPage";
+import MoviePage from "./pages/MoviePage";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/movie" element={<MoviePage />} />
         </Route>
         <Route path="/" element={<LoginPage />} />
       </Routes>

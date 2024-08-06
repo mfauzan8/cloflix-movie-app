@@ -30,15 +30,15 @@ const NowPlaying = () => {
             <h2 className='text-3xl font-bold'>Now Playing</h2>
             <div className='flex gap-3 justify-center items-end'>
               <button
-                className='bg-red-800 px-2 py-1 rounded-lg disabled:opacity-70 hover:opacity-90'
+                className='bg-red-800 px-2 py-1  border text-white rounded-lg disabled:opacity-70 hover:opacity-90'
                 onClick={() => setPage(page - 1)}
                 disabled={page <= 1}
               >
                 Prev
               </button>
-              <span className='bg-white text-black font-bold px-3 py-1 rounded-lg'>{page}</span>
+              <span className='text-white border font-bold px-3 py-1 rounded-lg'>{page}</span>
               <button
-                className='bg-red-800 px-2 py-1 rounded-lg disabled:opacity-70 hover:opacity-90'
+                className='bg-red-800 px-2 py-1 border text-white rounded-lg disabled:opacity-70 hover:opacity-90'
                 onClick={() => setPage(page + 1)}
               >
                 Next

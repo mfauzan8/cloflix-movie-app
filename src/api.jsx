@@ -49,4 +49,9 @@ export const getNowPlaying = async (page) => {
   return response.data;
 };
 
+export const getMovie = async (page) => {
+  const response = await api.get(`/discover/movie?language=en-US&include_adult=false&page=${page}&sort_by=popularity.desc`);
+  return response.data;
+};
+
 export default api;
