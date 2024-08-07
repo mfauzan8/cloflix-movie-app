@@ -1,24 +1,27 @@
 import React,{useState, useEffect} from 'react'
 import Navbar from '../component/Movie/Navbar'
 import Card from '../component/Movie/Card'
-import { getMovie } from '../api'
+import { getMovie, getTV } from '../api'
 import Pagination from '../component/Movie/Pagination'
+import { useLocation } from 'react-router-dom';
 
-const MoviePage = () => {
+const ListPage = () => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
+    const location = useLocation();
   
     const fetchData = async () => {
       setLoading(true);
-      const data = await getMovie(page);
+      const filteredEndpoint = location.pathname == '/movie' ? getMovie(page) : getTV(page)
+      const data = await filteredEndpoint;
       setMovies(data);
       setLoading(false);
     };
   
     useEffect(() => {
       fetchData();
-    }, [page]);
+    }, [page, location]);
   
   return (
     <div className='w-screen bg-black '>
@@ -41,4 +44,4 @@ const MoviePage = () => {
   )
 }
 
-export default MoviePage
+export default ListPage
