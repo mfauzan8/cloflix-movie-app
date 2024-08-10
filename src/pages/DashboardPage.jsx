@@ -60,8 +60,8 @@ const DashboardPage = () => {
                   <span className="font-normal text-xl"> {item.vote_count}</span>
                 </div>
                 <div className="flex w-2/5 gap-2">
-                <button className="button-movie bg-red-800">Details</button>
-                <button className="flex items-center gap-1 button-movie bg-black "><FaPlus /> Add to Watchlist</button>
+                {/* <button className="button-movie bg-red-800">Details</button> */}
+                <button className="flex items-center gap-1 button-movie bg-black ">Detail</button>
                 </div>
               </div>
             </div>

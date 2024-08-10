@@ -5,6 +5,8 @@ import LoginPage from './pages/LoginPage';
 import PrivateRoute from "./routes/PrivateRoute";
 import DashboardPage from "./pages/DashboardPage";
 import ListPage from "./pages/ListPage";
+import SearchPage from "./pages/SearchPage";
+import WatchlistPage from "./pages/WatchlistPage";
 
 export default function App() {
   return (
@@ -16,7 +18,8 @@ export default function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/movie" element={<ListPage />} />
           <Route path="/tv" element={<ListPage />} />
-
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/watchlist" element={<WatchlistPage />} />
         </Route>
         <Route path="/" element={<LoginPage />} />
       </Routes>

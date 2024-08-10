@@ -1,34 +1,68 @@
-import { Link } from "react-router-dom";
-import React from "react";
+import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import ISO6391 from 'iso-639-1';
 import moment from "moment";
 import { FaStar } from "react-icons/fa";
-import { FaBookmark } from "react-icons/fa6";
-
+import { FaRegBookmark, FaBookmark } from "react-icons/fa6";
 
 const Card = ({ movie }) => {
+  const navigate = useNavigate();
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
+  useEffect(() => {
+    const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+    const isFind = watchlist.some((item) => item.id === movie.id);
+    setIsBookmarked(isFind);
+  }, [movie.id]);
+
+  const handleAddBookmark = (movie, e) => {
+    e.stopPropagation();
+
+    let watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+    const isFind = watchlist.some((item) => item.id === movie.id);
+
+    if (!isFind) {
+      watchlist.push(movie);
+      localStorage.setItem("watchlist", JSON.stringify(watchlist));
+      setIsBookmarked(true); 
+    } else {
+      watchlist = watchlist.filter((item) => item.id !== movie.id);
+      localStorage.setItem("watchlist", JSON.stringify(watchlist));
+      setIsBookmarked(false);
+    }
+
+    window.dispatchEvent(new Event("storage"));
+  };
 
   return (
-    <Link
-      to={`/movie/${movie.id}`}
-      style={{ textDecoration: "none", color: "white" }}
-    >
-      <div className="card">
-        <img
-          className="cards_img"
-          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-        />
-
-        <div className="flex justify-between">
-          <div className="card_rating flex items-center gap-1"><FaStar className="text-yellow-400" /> {movie.vote_average.toFixed(1)}</div>
-          <div className="card_watchlist"><FaBookmark className="text-red-900" /></div>
+    <div className="card" onClick={() => navigate(`/movie/${movie.id}`)}>
+      <img
+        className="cards_img"
+        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+        alt={movie.original_title}
+      />
+      <div className="flex justify-between">
+        <div className="card_rating flex items-center gap-1 text-white">
+          <FaStar className="text-yellow-400" /> {movie.vote_average?.toFixed(1)}
         </div>
-        <div className="cards_overlay">
-          <div className="cards_title">{movie.original_title}</div>
-          <div className="cards_date">{moment(movie.release_date).format('MMM YYYY')} • {ISO6391.getName(movie.original_language)}</div>
+        <div
+          className="card_watchlist"
+          onClick={(e) => handleAddBookmark(movie, e)}
+        >
+          {isBookmarked ? (
+            <FaBookmark className="text-red-800 h-5 hover:shake" />
+          ) : (
+            <FaRegBookmark className="text-red-800 h-5 hover:shake" />
+          )}
         </div>
       </div>
-    </Link>
+      <div className="cards_overlay text-white">
+        <div className="cards_title">{movie.original_title}</div>
+        <div className="cards_date">
+          {moment(movie.release_date).format('MMM YYYY')} • {ISO6391.getName(movie.original_language)}
+        </div>
+      </div>
+    </div>
   );
 };
 

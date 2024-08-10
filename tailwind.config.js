@@ -29,7 +29,7 @@ module.exports = {
         ".button-movie": {
           fontWeight: "700",
           padding: "0.5rem 1rem",
-          borderRadius: "10px",
+          borderRadius: "5px",
           textAlign: "center",
           display: "inline-block",
           textDecoration: "none",
@@ -38,6 +38,8 @@ module.exports = {
 
           "&:hover": {
             opacity: 0.9,
+            boxShadow: "0 0.5em 0.5em -0.4em var(--hover)",
+            transform: "translateY(-0.2em)",
           },
 
           "&:focus": {

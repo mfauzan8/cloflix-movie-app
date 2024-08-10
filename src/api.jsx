@@ -59,4 +59,9 @@ export const getTV = async (page) => {
   return response.data;
 };
 
+export const getSearch = async (search,type,country,page) => {
+  const response = await api.get(`/search/${type}?query=${search}&include_adult=false&language=${country}&page=${page}`);
+  return response.data;
+};
+
 export default api;

@@ -165,6 +165,10 @@
   opacity: 0.8;
 }
 
+.card_watchlist:hover{
+  animation: shake 0.6s infinite;
+}
+
 .cards_title {
   font-weight: 700;
   font-size: 1rem;
@@ -174,4 +178,13 @@
 .cards_date {
   font-weight: 400;
   font-size: 14px;
+}
+
+
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0eg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
 }
