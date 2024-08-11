@@ -1,7 +1,7 @@
 <div align="center">
-    <img src="./public/android-chrome-192x192.png" alt="Cloflix" width="100" />
+    <img src="./src/assets/image/cloflix.png" alt="Cloflix" width="100" />
   <h2>Movies Website - Cloflix</h2>
-    <a href="" target="_blank">➥ Live Demo</a>
+    <a href="https://cloflix-movie-app.vercel.app/" target="_blank">➥ Live Demo</a>
 </div>
 
 ## Technologies Used
@@ -39,10 +39,3 @@ To run the website locally, clone the repository and run the following commands:
     ```
 
 This will start the development server and the website will be available at http://localhost:5173/.
-
-
-
-<h2>ScreenShot</h2>
-<div align="center">
-    <img src="" alt="Cloflix" width="500" />
-</div>
