@@ -23,6 +23,7 @@ export default function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/watchlist" element={<WatchlistPage />} />
           <Route path="/movie/detail/:id" element={<MovieDetail />}></Route>
+          <Route path="/tv/detail/:id" element={<MovieDetail />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Route>
         <Route path="/" element={<LoginPage />} />

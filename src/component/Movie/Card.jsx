@@ -5,7 +5,7 @@ import moment from "moment";
 import { FaStar } from "react-icons/fa";
 import { FaRegBookmark, FaBookmark } from "react-icons/fa6";
 
-const Card = ({ movie }) => {
+const Card = ({ movie, onLoad }) => {
   const navigate = useNavigate();
   const [isBookmarked, setIsBookmarked] = useState(false);
 
@@ -22,7 +22,7 @@ const Card = ({ movie }) => {
     const isFind = watchlist.some((item) => item.id === movie.id);
 
     if (!isFind) {
-      watchlist.push(movie);
+      watchlist.push({ ...movie, type: onLoad });
       localStorage.setItem("watchlist", JSON.stringify(watchlist));
       setIsBookmarked(true);
     } else {
@@ -35,9 +35,9 @@ const Card = ({ movie }) => {
   };
 
   return (
-    <div className="card" onClick={() => navigate(`/movie/detail/${movie.id}`)}>
+    <div className="card" onClick={() => navigate(`/${onLoad}/detail/${movie.id}`)}>
       <img
-        className="cards_img"
+        className="cards_img rounded-lg"
         src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
         alt={movie.original_title}
       />

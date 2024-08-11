@@ -32,7 +32,7 @@ const WatchlistPage = () => {
         <div className={`flex flex-wrap ${watchlist.length > 0 ? 'justify-start' : 'justify-center'} gap-6`}>
           {watchlist.length > 0 ? (
             watchlist.map((movie) => (
-              <Card key={movie.id} movie={movie} />
+              <Card key={movie.id} movie={movie} onLoad={movie.type} />
             ))
           ) : (
             <p className='text-white'>Your watchlist is empty.</p>

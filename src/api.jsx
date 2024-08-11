@@ -64,13 +64,13 @@ export const getSearch = async (search, type, country, page) => {
   return response.data;
 };
 
-export const getMovieDetail = async (id) => {
-  const response = await api.get(`/movie/${id}?language=en-US`);
+export const getDetail = async (type, id) => {
+  const response = await api.get(`/${type}/${id}?language=en-US`);
   return response.data;
 }
 
-export const getCredits = async (id) => {
-  const response = await api.get(`/movie/${id}/credits`);
+export const getCredits = async (type, id) => {
+  const response = await api.get(`/${type}/${id}/credits`);
   return response.data;
 }
 

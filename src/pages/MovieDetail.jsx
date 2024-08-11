@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../component/Movie/Navbar';
-import { getCredits, getMovieDetail } from '../api';
-import { useParams } from 'react-router-dom';
+import { getCredits, getDetail } from '../api';
+import { useLocation, useParams } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import CardCast from '../component/Movie/CardCast';
 import moment from 'moment';
@@ -10,12 +10,14 @@ import Spinner from '../component/Movie/Spinner';
 const MovieDetail = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
+    const location = useLocation()
+    const isMovie = location.pathname.startsWith('/movie');
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
             try {
-                const response = await getMovieDetail(id);
-                const responseCredit = await getCredits(id);
+                const response = await getDetail(isMovie ? 'movie' : 'tv', id);
+                const responseCredit = await getCredits(isMovie ? 'movie' : 'tv', id);
                 setData({ movie: response, credits: responseCredit });
             } catch (error) {
                 console.error("Error fetching movie details:", error);
@@ -43,12 +45,12 @@ const MovieDetail = () => {
                             />
                         </div>
                         <div className="w-full md:w-3/4 text-white md:ml-10">
-                            <h1 className="text-4xl md:text-5xl font-bold mb-4">{data?.movie?.title}</h1>
-                            <p className="text-xl mb-4 italic">{data?.movie?.tagline}</p>
+                            <h1 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">{data?.movie?.title || data?.movie?.original_name}</h1>
+                            <p className="text-xl mb-4 italic drop-shadow-lg">{data?.movie?.tagline}</p>
                             <div className="flex items-center gap-2 mb-4">
-                                <span className="text-3xl font-bold">{data?.movie?.vote_average.toFixed(1)}</span>
+                                <span className="text-3xl font-bold drop-shadow-lg">{data?.movie?.vote_average.toFixed(1)}</span>
                                 <FaStar className="text-yellow-400 text-2xl" />
-                                <span className="text-lg">({data?.movie?.vote_count} votes)</span>
+                                <span className="text-lg drop-shadow-lg">({data?.movie?.vote_count} votes)</span>
                             </div>
                             <div className="flex items-center gap-4 mb-4">
                                 <span>{data?.movie?.runtime} mins</span>
@@ -69,7 +71,7 @@ const MovieDetail = () => {
                             <h2 className="text-2xl font-bold mb-2">Cast</h2>
                             <div className="scroll flex overflow-auto">
                                 {data?.credits?.cast?.map((credit) => (
-                                    <div key={credit.id} >
+                                    <div key={'cast' + credit.id} >
                                         <CardCast cast={credit} />
                                     </div>
                                 ))}

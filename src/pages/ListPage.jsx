@@ -33,7 +33,7 @@ const ListPage = () => {
         <>
           <div className='flex flex-wrap justify-center pt-24 mx-auto'>
             {movies?.results?.map(movie => (
-              <Card key={movie.id} movie={movie} />
+              <Card key={movie.id} movie={movie} onLoad={location.pathname == '/movie' ? 'movie' : 'tv'} />
             ))}
           </div>
           <Pagination setPage={setPage} page={page} totalPages={100} />
