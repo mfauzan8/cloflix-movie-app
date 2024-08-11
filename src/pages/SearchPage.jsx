@@ -8,6 +8,7 @@ import { FaSearch } from "react-icons/fa";
 import { getSearch } from "../api";
 import Card from "../component/Movie/Card";
 import Pagination from "../component/Movie/Pagination";
+import Spinner from "../component/Movie/Spinner";
 
 const SearchPage = () => {
   const [country, setCountry] = useState([]);
@@ -17,6 +18,7 @@ const SearchPage = () => {
     country: "id-ID",
   });
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false)
   const [movies, setMovies] = useState({ results: [] });
 
   const getLanguageOptions = () => {
@@ -37,6 +39,7 @@ const SearchPage = () => {
   }, []);
 
   const fetchData = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const response = await getSearch(
       params.search,
@@ -45,6 +48,7 @@ const SearchPage = () => {
       page,
     );
     setMovies(response);
+    setLoading(false);
   };
   return (
     <div className="w-screen bg-black min-h-screen">
@@ -79,15 +83,17 @@ const SearchPage = () => {
           <FaSearch />
         </button>
       </form>
-      {movies.results.length > 0 && (
-        <>
-          <div className="flex flex-wrap justify-center pt-24">
-            {movies?.results?.map((movie) => (
-              <Card key={movie.id} movie={movie} />
-            ))}
-          </div>
-          <Pagination setPage={setPage} page={page} totalPages={100} />
-        </>
+      {loading ? <Spinner /> : (
+        movies.results.length > 0 && (
+          <>
+            <div className="flex flex-wrap justify-center pt-24">
+              {movies?.results?.map((movie) => (
+                <Card key={movie.id} movie={movie} />
+              ))}
+            </div>
+            <Pagination setPage={setPage} page={page} totalPages={100} />
+          </>
+        )
       )}
     </div>
   );

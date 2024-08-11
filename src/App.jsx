@@ -8,6 +8,7 @@ import ListPage from "./pages/ListPage";
 import SearchPage from "./pages/SearchPage";
 import WatchlistPage from "./pages/WatchlistPage";
 import MovieDetail from "./pages/MovieDetail";
+import NotFound from "./pages/NotFoundPage";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/watchlist" element={<WatchlistPage />} />
           <Route path="/movie/detail/:id" element={<MovieDetail />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Route>
         <Route path="/" element={<LoginPage />} />
       </Routes>

@@ -24,7 +24,7 @@ const Card = ({ movie }) => {
     if (!isFind) {
       watchlist.push(movie);
       localStorage.setItem("watchlist", JSON.stringify(watchlist));
-      setIsBookmarked(true); 
+      setIsBookmarked(true);
     } else {
       watchlist = watchlist.filter((item) => item.id !== movie.id);
       localStorage.setItem("watchlist", JSON.stringify(watchlist));
