@@ -9,7 +9,7 @@ const api = axios.create({
     accept: "application/json",
     "Content-Type": "application/json",
     Authorization: `Bearer ${API_KEY}`
-}
+  }
 });
 
 export const getNewToken = async () => {
@@ -59,9 +59,20 @@ export const getTV = async (page) => {
   return response.data;
 };
 
-export const getSearch = async (search,type,country,page) => {
+export const getSearch = async (search, type, country, page) => {
   const response = await api.get(`/search/${type}?query=${search}&include_adult=false&language=${country}&page=${page}`);
   return response.data;
 };
+
+export const getMovieDetail = async (id) => {
+  const response = await api.get(`/movie/${id}?language=en-US`);
+  return response.data;
+}
+
+export const getCredits = async (id) => {
+  const response = await api.get(`/movie/${id}/credits`);
+  return response.data;
+}
+
 
 export default api;

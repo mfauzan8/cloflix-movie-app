@@ -7,8 +7,10 @@ import { BiSolidLike } from "react-icons/bi";
 import Navbar from "../component/Movie/Navbar";
 import { FaPlus } from "react-icons/fa";
 import NowPlaying from "../component/Movie/NowPlaying";
+import { useNavigate } from "react-router-dom";
 
 const DashboardPage = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
 
   const fetchDataTrending = async () => {
@@ -34,7 +36,7 @@ const DashboardPage = () => {
         infiniteLoop
         showThumbs={false}
         showStatus={false}
-        stopOnHover	={false}
+        stopOnHover={false}
         className="z-10"
       >
         {data?.results?.map((item) => (
@@ -60,15 +62,15 @@ const DashboardPage = () => {
                   <span className="font-normal text-xl"> {item.vote_count}</span>
                 </div>
                 <div className="flex w-2/5 gap-2">
-                {/* <button className="button-movie bg-red-800">Details</button> */}
-                <button className="flex items-center gap-1 button-movie bg-black ">Detail</button>
+                  {/* <button className="button-movie bg-red-800">Details</button> */}
+                  <button className="flex items-center gap-1 button-movie bg-black " onClick={() => navigate(`/movie/detail/${item.id}`)}>Detail</button>
                 </div>
               </div>
             </div>
           </div>
         ))}
       </Carousel>
-      <NowPlaying/>
+      <NowPlaying />
     </div>
   );
 };

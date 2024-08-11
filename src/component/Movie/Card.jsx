@@ -35,7 +35,7 @@ const Card = ({ movie }) => {
   };
 
   return (
-    <div className="card" onClick={() => navigate(`/movie/${movie.id}`)}>
+    <div className="card" onClick={() => navigate(`/movie/detail/${movie.id}`)}>
       <img
         className="cards_img"
         src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
